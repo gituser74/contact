@@ -1,12 +1,12 @@
 <div class="col-12 main">
-
+    <!-- Div for showing count of total, active & inactive contacts -->
     <div class="col-12 p-0 border-bottom">
         <label class="labelHead col-2">Total Contacts : {{contactList?.length}} </label>
         <label class="labelHead col-2">Active Contacts : {{activeContacts?.length}} </label>
         <label class="labelHead col-2">Inactive Contacts : {{inactiveContacts?.length}} </label>
         <button type="button" class="btn btn-outline-success btn-sm float-end" title="Add New Contact" (click)="addContact()">Add Contact</button>
     </div>
-
+    <!-- Table for showing Contact List  -->
     <table class="table mt-30">
         <thead class="table-light">
             <tr>
@@ -28,9 +28,13 @@
                 <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.phoneNumber}}</td>
                 <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.status}}</td>
                 <td>
+                    <!-- Button to delete/Inactivate contact -->
                     <i *ngIf="data?.status == 'Active'" class="fa fa-trash-o icon ml-10" title="Delete Contact" (click)="deleteContact(data)"></i>
+                    <!-- Button to reactivate the contact, -->
                     <i *ngIf="data?.status != 'Active'" class="fa fa-check icon ml-10" title="Activate Contact" (click)="activateContact(data)"></i>
+                    <!-- Edit contact button enabled when contact is active -->
                     <i *ngIf="data?.status == 'Active'" class="fa fa-pencil icon ml-10" title="Edit Contact" (click)="editContact(data)"></i>
+                    <!-- Edit contact button is disabled when contact is deleted/inactive -->
                     <i *ngIf="data?.status != 'Active'" class="fa fa-pencil icon-disabled ml-10" title="Edit Contact"></i>
                 </td>
             </tr>

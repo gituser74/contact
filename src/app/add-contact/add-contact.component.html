@@ -2,6 +2,7 @@
     <div class="col-12 p-0 border-bottom">
         <label class="labelHead">Add Contact</label>
     </div>
+    <!-- Contact Form fields for adding new contact -->
     <form [formGroup]="contactForm">
         <div class="col-12 mt-30">
             <div class="row form-group col-12">
@@ -72,9 +73,13 @@
                 </label>
             </div>
             <div class=" mt-20 form-group col-7 float-end">
+                <!-- Cancel will redirect user to contact list page -->
                 <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="redirect()">Cancel</button>
+                <!-- Reset button to reset the form -->
                 <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="contactForm.reset()">Reset</button>
+                <!-- Show save button if form is valid -->
                 <button type="button" *ngIf="!contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Save Contact" (click)="saveContact()">Save</button>
+                <!-- Show disabled save button if form is invalid -->
                 <button type="button" *ngIf="contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Save Contact" (click)="saveContact()" disabled>Save</button>
             </div>
         </div>

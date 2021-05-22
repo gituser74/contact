@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../services/contact.service';
 import { Contact } from '../models/contact.model';
 import { Router } from '@angular/router';
-import { getNumberOfCurrencyDigits } from '@angular/common';
 
 @Component({
   selector: 'app-contacts',
@@ -22,10 +21,13 @@ export class ContactsComponent implements OnInit {
     this.getCount();
   }
 
+  /* Function to get count of active & inactive contacts */
   getCount() {
       this.activeContacts = this.contactList.filter(contact => contact.status === "Active");
       this.inactiveContacts = this.contactList.filter(contact => contact.status === "Inactive");
   }
+
+  /* Function to delete/inactivate contact */
   deleteContact(contact) {
     var ask = "Are you sure, you want to delete contact '" + contact.firstName + " " + contact.lastName + "' ?";
     var result = confirm(ask);
@@ -35,6 +37,7 @@ export class ContactsComponent implements OnInit {
     this.getCount();
   }
 
+  /* Function to activate deleted/inactivated contact */
   activateContact(contact) {
     var ask = "Are you sure, you want to activate contact '" + contact.firstName + " " + contact.lastName + "' ?";
     var result = confirm(ask);
@@ -44,10 +47,12 @@ export class ContactsComponent implements OnInit {
     this.getCount();
   }
 
+  /* Navigate to add contact page */
   addContact() {
     this.router.navigateByUrl("/add-contact");
   }
 
+  /* Navigate to edit contact page */
   editContact(data) {
     this.router.navigate(["edit-contact/" + data.id]);
   }

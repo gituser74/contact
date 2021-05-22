@@ -1,13 +1,10 @@
 <div class="col-12 main">
-
     <div class="col-12 p-0 border-bottom">
         <label class="labelHead">Edit Contact</label>
     </div>
-
+    <!-- Contact Form fields for adding new contact -->
     <form [formGroup]="contactForm">
-
         <div class="col-12 mt-30">
-
             <div class="row form-group col-12">
                 <div class="col-2 offset-md-3 p-0">
                     <label for="" class="labelLight14">First Name</label>
@@ -54,7 +51,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row form-group col-12">
                 <div class="col-2 offset-md-3 p-0">
                     <label for="" class="labelLight14">Phone Number</label>
@@ -69,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row form-group col-12">
                 <label class="legends col-4 offset-md-3 p-0">
                     Fields marked by
@@ -77,18 +72,15 @@
                     are mandatory fields
                 </label>
             </div>
-
-
             <div class=" mt-20 form-group col-7 float-end">
+                <!-- Cancel will redirect user to contact list page -->
                 <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="redirect()">Cancel</button>
-
+                <!-- Reset button to reset the form -->
                 <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="contactForm.reset()">Reset</button>
-
+                <!-- Show save button if form is valid -->
                 <button type="button" *ngIf="!contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Edit Contact" (click)="editContact()">Save</button>
-
+                <!-- Show disabled save button if form is invalid -->
                 <button type="button" *ngIf="contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Edit Contact" disabled>Save</button>
-
-
             </div>
         </div>
 

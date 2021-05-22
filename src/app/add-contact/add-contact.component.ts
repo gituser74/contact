@@ -17,7 +17,7 @@ export class AddContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* Initialize contact form */
+    /* Initialize contact form along with field validations */
     this.contactForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern(/^([a-zA-Z_]){2,20}$/)]],
       lastName: ['', [Validators.required, Validators.pattern(/^([a-zA-Z_]){2,20}$/)]],
@@ -32,10 +32,15 @@ export class AddContactComponent implements OnInit {
 
   saveContact() {
     if (this.contactForm.valid) {
+
+      /* convert first and last name to title case */
+      let fname = this.contactForm.get('firstName').value.charAt(0).toUpperCase() + this.contactForm.get('firstName').value.substr(1).toLowerCase();
+      let lname = this.contactForm.get('lastName').value.charAt(0).toUpperCase() + this.contactForm.get('lastName').value.substr(1).toLowerCase();
+
       let contact = {
         "id": this.contactService.getMaxId() + 1,
-        "firstName": this.contactForm.get('firstName').value,
-        "lastName": this.contactForm.get('lastName').value,
+        "firstName": fname,
+        "lastName": lname,
         "email": this.contactForm.get('email').value,
         "phoneNumber": this.contactForm.get('phoneNumber').value,
         "status": "Active"
@@ -45,6 +50,7 @@ export class AddContactComponent implements OnInit {
     }
   }
 
+  /* Navigate to contact list page */
   redirect() { 
     this.router.navigateByUrl("/contact-list");     
   }

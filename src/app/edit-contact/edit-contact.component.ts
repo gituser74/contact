@@ -30,7 +30,7 @@ export class EditContactComponent implements OnInit {
       this.redirect();
     }
 
-    /* Initialize contact form */
+    /* Initialize contact form with existing values along with field validations */
     this.contactForm = this.formBuilder.group({
       firstName: [getContact.firstName, [Validators.required, Validators.pattern(/^([a-zA-Z_]){2,20}$/)]],
       lastName: [getContact.lastName, [Validators.required, Validators.pattern(/^([a-zA-Z_]){2,20}$/)]],
@@ -44,7 +44,6 @@ export class EditContactComponent implements OnInit {
 
   editContact() {
     if (this.contactForm.valid) {
-
       let contact = {
         "id": this.id,
         "firstName": this.contactForm.get('firstName').value,
@@ -58,6 +57,7 @@ export class EditContactComponent implements OnInit {
     }
   }
 
+  /* Navigate to contact list page */
   redirect() { 
     this.router.navigateByUrl("/contact-list");   
   }
