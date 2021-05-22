@@ -1,0 +1,26 @@
+.bg-light {
+    background-color: #e6e6e6 !important;
+}
+
+li {
+    padding: 10px;
+    margin: 5px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li.active {
+    background-color: #f2f2f2 !important;
+    color: black;
+}
+
+li:hover {
+    background-color: #f2f2f2 !important;
+    color: black;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}

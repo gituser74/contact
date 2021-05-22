@@ -1,0 +1,96 @@
+<div class="col-12 main">
+
+    <div class="col-12 p-0 border-bottom">
+        <label class="labelHead">Edit Contact</label>
+    </div>
+
+    <form [formGroup]="contactForm">
+
+        <div class="col-12 mt-30">
+
+            <div class="row form-group col-12">
+                <div class="col-2 offset-md-3 p-0">
+                    <label for="" class="labelLight14">First Name</label>
+                </div>
+                <div class="col-3 inputDiv d-flex">
+                    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': controls.firstName.touched && controls.firstName.errors }" />
+                </div>
+                <div class="col-4 d-flex" *ngIf="controls.firstName.touched && controls.firstName.errors">
+                    <div class="col-12 d-flex error-message">
+                        <div class="col-12" *ngIf="controls.firstName.errors.required">First Name is required</div>
+                        <div class="col-12" *ngIf="controls.firstName.errors.pattern">
+                            First Name must be alphabet with 2-20 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group col-12">
+                <div class="col-2 offset-md-3 p-0">
+                    <label for="" class="labelLight14">Last Name</label>
+                </div>
+                <div class="col-3 inputDiv d-flex">
+                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': controls.lastName.touched && controls.lastName.errors }" />
+                </div>
+                <div class="col-4 d-flex" *ngIf="controls.lastName.touched && controls.lastName.errors">
+                    <div class="col-12 d-flex error-message">
+                        <div class="col-12" *ngIf="controls.lastName.errors.required">Last Name is required</div>
+                        <div class="col-12" *ngIf="controls.lastName.errors.pattern">
+                            Last Name must be alphabet with 2-20 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group col-12">
+                <div class="col-2 offset-md-3 p-0">
+                    <label for="" class="labelLight14">Email</label>
+                </div>
+                <div class="col-3 inputDiv d-flex">
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': controls.email.touched && controls.email.errors }" />
+                </div>
+                <div class="col-4 d-flex" *ngIf="controls.email.touched && controls.email.errors">
+                    <div class="col-12 d-flex error-message">
+                        <div class="col-12" *ngIf="controls.email.errors.required">Email is required</div>
+                        <div class="col-12" *ngIf="controls.email.errors.pattern">Email address is not valid</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group col-12">
+                <div class="col-2 offset-md-3 p-0">
+                    <label for="" class="labelLight14">Phone Number</label>
+                </div>
+                <div class="col-3 inputDiv d-flex">
+                    <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': controls.phoneNumber.touched && controls.phoneNumber.errors }" />
+                </div>
+                <div class="col-4 d-flex" *ngIf="controls.phoneNumber.touched && controls.phoneNumber.errors">
+                    <div class="col-12 d-flex error-message">
+                        <div class="col-12" *ngIf="controls.phoneNumber.errors.required">Phone Number is required</div>
+                        <div class="col-12" *ngIf="controls.phoneNumber.errors.pattern">Phone Number is not valid</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group col-12">
+                <label class="legends col-4 offset-md-3 p-0">
+                    Fields marked by
+                    <font class="text-danger fs-14">*</font>
+                    are mandatory fields
+                </label>
+            </div>
+
+
+            <div class=" mt-20 form-group col-7 float-end">
+                <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="redirect()">Cancel</button>
+
+                <button type="button" class="btn btn-outline-secondary btn-sm ml-10" title="Cancel" (click)="contactForm.reset()">Reset</button>
+
+                <button type="button" *ngIf="!contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Edit Contact" (click)="editContact()">Save</button>
+
+                <button type="button" *ngIf="contactForm.invalid" class="btn btn-outline-success btn-sm ml-10" title="Edit Contact" disabled>Save</button>
+
+
+            </div>
+        </div>
+
+    </form>
+</div>

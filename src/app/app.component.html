@@ -1,0 +1,26 @@
+<div class="mainContainer">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Contact Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li (click)="navigateTo('contacts')">
+                        <a>Contact List</a></li>
+                    <li (click)="navigateTo('add-contact')">
+                        <a>Add Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="footer">
+    </div>
+
+</div>

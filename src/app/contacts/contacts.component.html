@@ -1,0 +1,42 @@
+<div class="col-12 main">
+
+    <div class="col-12 p-0 border-bottom">
+        <label class="labelHead col-2">Total Contacts : {{contactList?.length}} </label>
+        <label class="labelHead col-2">Active Contacts : {{activeContacts?.length}} </label>
+        <label class="labelHead col-2">Inactive Contacts : {{inactiveContacts?.length}} </label>
+        <button type="button" class="btn btn-outline-success btn-sm float-end" title="Add New Contact" (click)="addContact()">Add Contact</button>
+    </div>
+
+    <table class="table mt-30">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngClass]="{'opacity':data?.status != 'Active'}" *ngFor="let data of contactList; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{data?.firstName | titlecase}}</td>
+                <td>{{data?.lastName | titlecase}}</td>
+                <td>{{data?.email}}</td>
+                <td>{{data?.phoneNumber}}</td>
+                <td>{{data?.status}}</td>
+                <td>
+                    <i *ngIf="data?.status == 'Active'" class="fa fa-trash-o icon ml-10" title="Delete Contact" (click)="deleteContact(data)"></i>
+                    <i *ngIf="data?.status != 'Active'" class="fa fa-trash-o icon-disabled ml-10" title="Delete Contact"></i>
+                    <i *ngIf="data?.status == 'Active'" class="fa fa-pencil icon ml-10" title="Edit Contact" (click)="editContact(data)"></i>
+                    <i *ngIf="data?.status != 'Active'" class="fa fa-pencil icon-disabled ml-10" title="Edit Contact"></i>
+                </td>
+            </tr>
+            <tr *ngIf="contactList?.length == 0">
+                <td colspan="7" class="text-center">No Contacts Found</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
