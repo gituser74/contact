@@ -20,16 +20,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr [ngClass]="{'opacity':data?.status != 'Active'}" *ngFor="let data of contactList; let i=index">
+            <tr *ngFor="let data of contactList; let i=index">
                 <td>{{i+1}}</td>
-                <td>{{data?.firstName | titlecase}}</td>
-                <td>{{data?.lastName | titlecase}}</td>
-                <td>{{data?.email}}</td>
-                <td>{{data?.phoneNumber}}</td>
-                <td>{{data?.status}}</td>
+                <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.firstName | titlecase}}</td>
+                <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.lastName | titlecase}}</td>
+                <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.email}}</td>
+                <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.phoneNumber}}</td>
+                <td [ngClass]="{'opacity':data?.status != 'Active'}">{{data?.status}}</td>
                 <td>
                     <i *ngIf="data?.status == 'Active'" class="fa fa-trash-o icon ml-10" title="Delete Contact" (click)="deleteContact(data)"></i>
-                    <i *ngIf="data?.status != 'Active'" class="fa fa-trash-o icon-disabled ml-10" title="Delete Contact"></i>
+                    <i *ngIf="data?.status != 'Active'" class="fa fa-check icon ml-10" title="Activate Contact" (click)="activateContact(data)"></i>
                     <i *ngIf="data?.status == 'Active'" class="fa fa-pencil icon ml-10" title="Edit Contact" (click)="editContact(data)"></i>
                     <i *ngIf="data?.status != 'Active'" class="fa fa-pencil icon-disabled ml-10" title="Edit Contact"></i>
                 </td>

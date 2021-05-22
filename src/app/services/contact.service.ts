@@ -59,10 +59,10 @@ export class ContactService {
   }
 
   /* Delete/Inactivate contact from contact list */
-  deleteContact(id: number) {
+  activateDeactivateContact(id: number,action: string) {
     this.allContacts.map(x => {
       if (x.id == id) {
-        x.status = 'Inactive';
+        x.status = action;
       }
     });
   }

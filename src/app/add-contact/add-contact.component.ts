@@ -41,12 +41,12 @@ export class AddContactComponent implements OnInit {
         "status": "Active"
       }
       this.contactService.addContact(contact);
-      this.router.navigate(["contacts"]);
+      this.redirect(); 
     }
   }
 
   redirect() { 
-    this.router.navigateByUrl("/contacts");     
+    this.router.navigateByUrl("/contact-list");     
   }
 
 }

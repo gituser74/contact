@@ -59,7 +59,7 @@ export class EditContactComponent implements OnInit {
   }
 
   redirect() { 
-    this.router.navigateByUrl("/contacts");   
+    this.router.navigateByUrl("/contact-list");   
   }
 
 }
